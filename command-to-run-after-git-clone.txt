@@ -1,0 +1,21 @@
+
+composer install
+php artisan jwt:generate
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\JWTAuthServiceProvider"
+php artisan key:generate
+
+-----------------------------------change the .env file--------------------------------------------------------------
+open the .env file locate the 
+mysql drivers settings and change the databases name and credentials respectively
+in the /app the "User.php" model 
+     change the "$filliable" variable to the fields that you want be inserted to the database when  doing registration
+	 you can change the table too that has to handle login
+
+if you are using "email" for login you can locate Http/app/controllers/ "AuthenticationController" and in  "authenticate()" functiuon  locate the 
+
+             $credentials = $request->only('username', 'password'); change 'username' to 'email'
+			 
+			 then "php artisan serve" should get you in the move
+			 
+			 
+	----------------------------------asiago-------------------------------------------------------------------------
